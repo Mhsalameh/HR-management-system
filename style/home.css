@@ -5,6 +5,10 @@
 html {
  height: 100%;   
 }
+
+#submit{
+    margin-bottom: 50px;
+}
 a {
     text-decoration: none;
     background-color: blue;
@@ -31,7 +35,7 @@ header {
     grid-row: 1/2;
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    background-color: antiquewhite;
+    background-color: #1572A1;
 }
 
 .header-nav{
@@ -46,12 +50,12 @@ header {
 
 main {
     grid-row: 2/3;
-    background-color: lightblue;
+    background-color: #EFDAD7;
 }
 
 footer  {
     grid-row: 3/4;
-    background-color: antiquewhite;
+    background-color: #E3BEC6;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
