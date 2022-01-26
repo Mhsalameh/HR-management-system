@@ -1,37 +1,49 @@
 'use strict';
-let dep=["Administration", "Marketing", "Development", "Finance"];
-let lev=["Junior", "Mid-Senior", "Senior"];
-
-function Employee(id, fullName, department, level){
-            this.id=id;
-            this.fullName=fullName;
-            this.department=dep[department];
-            this.level=lev[level];
-            this.salary=this.salary()*0.925;
-            this.render();
+let dep = ["Administration", "Marketing", "Development", "Finance"];
+let lev = ["Junior", "Mid-Senior", "Senior"];
+let employeesSection=document.getElementById("employees")
+function Employee(fullName, department, level) {
+  this.id = this.generateRandomIdNumber();
+  this.fullName = fullName;
+  this.department = dep[department];
+  this.level = lev[level];
+  this.salary = this.salary() * 0.925;
+  this.render();
 }
 
 
-Employee.prototype.salary = function(){
-        if(this.level=="Senior"){
-        return Math.floor(Math.random() * (2000 - 1500 + 1) ) + 1500;
-        }
-      else if(this.level=="Mid-Senior") {
-        return Math.floor(Math.random() * (1500 - 1000 + 1) ) + 1000;
-      }
-      else if (this.level=="Junior"){
-        return Math.floor(Math.random() * (1000 - 500 + 1) ) + 500;
-      }
+Employee.prototype.salary = function () {
+  if (this.level == "Senior") {
+    return Math.floor(Math.random() * (2000 - 1500 + 1)) + 1500;
+  }
+  else if (this.level == "Mid-Senior") {
+    return Math.floor(Math.random() * (1500 - 1000 + 1)) + 1000;
+  }
+  else if (this.level == "Junior") {
+    return Math.floor(Math.random() * (1000 - 500 + 1)) + 500;
+  }
 }
-Employee.prototype.render = function(){
-    document.write(`<h3>Name: ${this.fullName}</h3> `);
-    document.write(`<p> Salary: ${this.salary}</p> `);
+Employee.prototype.render = function () {
+  //document.write(`<h3>Name: ${this.fullName}</h3> `);
+  //document.write(`<p> Salary: ${this.salary}</p> `);
+  let heading = document.createElement('h4');
+  heading.textContent = this.name;
+  employeesSection.appendChild(heading);
 }
 
-    const ghazi = new Employee("1000", "Ghazi Samer",0 ,2);
-    const lana = new Employee("1001", "Lana Ali", 3, 2);
-    const tamara = new Employee("1002", "Tamara Ayoub", 1, 2);
-    const safi = new Employee("1003", "Safi Walid", 0 ,1);
-    const omar = new Employee("1004", "Omar Zaid", 2, 2);
-    const rana = new Employee("1005", "Rana Saleh", 2, 0);
-    const Hadi = new Employee("1006", "Hadi Ahmad", 3, 1);
+Employee.prototype.generateRandomIdNumber = function () {
+  return Math.floor(Math.random() * 9000 + 9999);
+}
+
+let form = document.getElementById("employeeForm");
+form.addEventListener("submit", handleSubmit);
+function handleSubmit(event) {
+  event.preventDefault();
+  let name = event.target.name.value;
+  let dep = event.target.dep.value;
+  let level = event.target.level.value;
+  let img = event.target.imgURL.value;
+  let newEmployee = new Employee( name, dep, level);
+  console.log(newEmployee);
+  
+}
