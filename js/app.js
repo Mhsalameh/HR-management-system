@@ -7,20 +7,20 @@ function Employee(id, fullName, department, level){
             this.fullName=fullName;
             this.department=dep[department];
             this.level=lev[level];
-            this.salary=this.salary()*0.925;
+            this.salary=this.salary();
             this.render();
 }
 
 
 Employee.prototype.salary = function(){
         if(this.level=="Senior"){
-        return Math.floor(Math.random() * (2000 - 1500 + 1) ) + 1500;
+        return Math.floor(((Math.random() * (2000 - 1500 + 1) ) + 1500)*0.925);
         }
       else if(this.level=="Mid-Senior") {
-        return Math.floor(Math.random() * (1500 - 1000 + 1) ) + 1000;
+        return Math.floor(((Math.random() * (1500 - 1000 + 1) ) + 1000)*0.925);
       }
       else if (this.level=="Junior"){
-        return Math.floor(Math.random() * (1000 - 500 + 1) ) + 500;
+        return Math.floor(((Math.random() * (1000 - 500 + 1) ) + 500)*0.925);
       }
 }
 Employee.prototype.render = function(){
